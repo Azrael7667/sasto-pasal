@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer
-from app.api.routes import auth, products, customers, transactions
+from app.api.routes import auth, products, customers, transactions, finance, dashboard
 
 security = HTTPBearer()
 
@@ -28,6 +28,8 @@ app.include_router(auth.router)
 app.include_router(products.router)
 app.include_router(customers.router)
 app.include_router(transactions.router)
+app.include_router(finance.router)
+app.include_router(dashboard.router)
 
 @app.get("/")
 def root():
