@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.api.routes import auth
+from app.api.routes import auth, products
 
 app = FastAPI(
     title="Sasto Pasal API",
@@ -20,8 +20,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include routers
 app.include_router(auth.router)
+app.include_router(products.router)
 
 @app.get("/")
 def root():
@@ -34,3 +34,6 @@ def root():
 @app.get("/health")
 def health_check():
     return {"status": "healthy"}
+
+from fastapi.security import HTTPBearer
+security = HTTPBearer()
