@@ -5,12 +5,16 @@ import { AuthProvider, useAuth } from './context/AuthContext'
 import Layout from './components/Layout'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
+import Inventory from './pages/Inventory'
+import POS from './pages/POS'
+import Khata from './pages/Khata'
+import Invoices from './pages/Invoices'
+import PnL from './pages/PnL'
+import Purchases from './pages/Purchases'
 import Placeholder from './pages/Placeholder'
 
 const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: { retry: 1, staleTime: 30000 }
-  }
+  defaultOptions: { queries: { retry: 1, staleTime: 30000 } }
 })
 
 function PrivateRoute({ children }) {
@@ -32,12 +36,12 @@ function AppRoutes() {
           <Layout>
             <Routes>
               <Route path="/"             element={<Dashboard />} />
-              <Route path="/pos"          element={<Placeholder title="POS & Daily Register" />} />
-              <Route path="/inventory"    element={<Placeholder title="Inventory & Stock" />} />
-              <Route path="/khata"        element={<Placeholder title="Khata / Udharo Ledger" />} />
-              <Route path="/invoices"     element={<Placeholder title="Invoices & Billing" />} />
-              <Route path="/pnl"          element={<Placeholder title="Profit & Loss" />} />
-              <Route path="/purchases"    element={<Placeholder title="Purchases & Expenses" />} />
+              <Route path="/pos"          element={<POS />} />
+              <Route path="/inventory"    element={<Inventory />} />
+              <Route path="/khata"        element={<Khata />} />
+              <Route path="/invoices"     element={<Invoices />} />
+              <Route path="/pnl"          element={<PnL />} />
+              <Route path="/purchases"    element={<Purchases />} />
               <Route path="/ai/forecast"  element={<Placeholder title="AI Cash Flow Forecast" />} />
               <Route path="/ai/customers" element={<Placeholder title="Customer Churn AI" />} />
               <Route path="/ai/hr"        element={<Placeholder title="HR Attrition AI" />} />
